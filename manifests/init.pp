@@ -44,8 +44,8 @@
 #
 class kylin (
 
-  $version       = $kylin::params::version,
-  $hbase_version = $kylin::params::hbase_version,
+  $version               = $kylin::params::version,
+  $hbase_version         = $kylin::params::hbase_version,
 
   $install_dir           = $kylin::params::install_dir,
   $extract_dir           = "/opt/kylin-${version}",
@@ -61,8 +61,8 @@ class kylin (
   $kylin_user            = $kylin::params::kylin_user,
   $kylin_uid             = $kylin::params::kylin_uid,
 
-  $kylin::package_name   = $kylin::params::package_name,
-  $kylin::package_ensure = $kylin::params::package_ensure,
+  $package_name   = $kylin::params::package_name,
+  $package_ensure = $kylin::params::package_ensure,
 
 ) inherits kylin::params {
 
