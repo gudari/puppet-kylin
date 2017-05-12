@@ -51,7 +51,7 @@ class kylin (
   $extract_dir           = "/opt/kylin-${version}",
   $download_dir          = $kylin::params::download_dir,
   $mirror_url            = $kylin::params::mirror_url,
-  $basefilename          = "apache-kylin-${version}-hbase${hbase_version}.tar.gz",
+  $basefilename          = "apache-kylin-${version}-hbase${hbase_version}-bin.tar.gz",
   $package_url           = "${mirror_url}/kylin/apache-kylin-${version}/${basefilename}",
   $log_dir               = $kylin::params::log_dir,
   $pid_dir               = $kylin::params::pid_dir,
