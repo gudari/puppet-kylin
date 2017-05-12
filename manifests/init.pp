@@ -55,6 +55,7 @@ class kylin (
   $package_url           = "${mirror_url}/kylin/apache-kylin-${version}/${basefilename}",
   $log_dir               = $kylin::params::log_dir,
   $pid_dir               = $kylin::params::pid_dir,
+  $config_dir            = "${install_dir}/conf",
 
   $kylin_group           = $kylin::params::kylin_group,
   $kylin_gid             = $kylin::params::kylin_gid,
