@@ -20,8 +20,8 @@ class kylin::install {
 
   file { $kylin::pid_dir:
     ensure => directory,
-    owner  => $kylin::user,
-    group  => $kylin::group,
+    owner  => $kylin::kylin_user,
+    group  => $kylin::kylin_group,
   }
 
   if $kylin::package_name == undef {
@@ -61,7 +61,7 @@ class kylin::install {
   file { $kylin::config_dir:
     ensure  => directory,
     owner   => $kylin::kylin_user,
-    group   => $kylin::group_user,
+    group   => $kylin::kylin_group,
     require => [
       Group[ $kylin::kylin_group ],
       User[ $kylin::kylin_user ],
