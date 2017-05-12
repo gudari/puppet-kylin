@@ -42,7 +42,44 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class kylin {
+class kylin (
 
+  $version       = $kylin::params::version,
+  $hbase_version = $kylin::params::hbase_version,
+
+  $install_dir           = $kylin::params::install_dir,
+  $extract_dir           = "/opt/kylin-${version}",
+  $download_dir          = $kylin::params::download_dir,
+  $mirror_url            = $kylin::params::mirror_url,
+  $basefilename          = "apache-kylin-${version}-hbase${hbase_version}.tar.gz",
+  $package_url           = "${mirror_url}/kylin/apache-kylin-${version}/${basefilename}",
+  $log_dir               = $kylin::params::log_dir,
+  $pid_dir               = $kylin::params::pid_dir,
+
+  $kylin_group           = $kylin::params::kylin_group,
+  $kylin_gid             = $kylin::params::kylin_gid,
+  $kylin_user            = $kylin::params::kylin_user,
+  $kylin_uid             = $kylin::params::kylin_uid,
+
+  $kylin::package_name   = $kylin::params::package_name,
+  $kylin::package_ensure = $kylin::params::package_ensure,
+
+) inherits kylin::params {
+
+  group { $kylin_group:
+    ensure => present,
+    gid    => $kylin_gid,
+  }
+
+  user { $kylin_user:
+    ensure  => present,
+    uid     => $kylin_uid,
+    groups  => $kylin_group,
+    require => Group[ $kylin_group ],
+  }
+
+  anchor { '::kylin::start': } ->
+  class { '::kylin::install': } ->
+  anchor { '::kylin::end': }
 
 }
